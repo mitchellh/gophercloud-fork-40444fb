@@ -661,6 +661,7 @@ type Server struct {
 	AccessIPv4         string `json:"accessIPv4"`
 	AccessIPv6         string `json:"accessIPv6"`
 	Addresses          AddressSet
+	AvailabilityZone   string            `json:"availability_zone"`
 	Created            string            `json:"created"`
 	Flavor             FlavorLink        `json:"flavor"`
 	HostId             string            `json:"hostId"`
@@ -755,20 +756,21 @@ type NewServerSettings struct {
 // Any Links provided are used to refer to the server specifically by URL.
 // These links are useful for making additional REST calls not explicitly supported by Gorax.
 type NewServer struct {
-	Name            string                   `json:"name,omitempty"`
-	ImageRef        string                   `json:"imageRef,omitempty"`
-	FlavorRef       string                   `json:"flavorRef,omitempty"`
-	Metadata        map[string]string        `json:"metadata,omitempty"`
-	Personality     []FileConfig             `json:"personality,omitempty"`
-	Networks        []NetworkConfig          `json:"networks,omitempty"`
-	AdminPass       string                   `json:"adminPass,omitempty"`
-	KeyPairName     string                   `json:"key_name,omitempty"`
-	Id              string                   `json:"id,omitempty"`
-	Links           []Link                   `json:"links,omitempty"`
-	OsDcfDiskConfig string                   `json:"OS-DCF:diskConfig,omitempty"`
-	SecurityGroup   []map[string]interface{} `json:"security_groups,omitempty"`
-	ConfigDrive     bool                     `json:"config_drive"`
-	UserData        string                   `json:"user_data"`
+	Name             string                   `json:"name,omitempty"`
+	AvailabilityZone string                   `json:"availability_zone,omitempty"`
+	ImageRef         string                   `json:"imageRef,omitempty"`
+	FlavorRef        string                   `json:"flavorRef,omitempty"`
+	Metadata         map[string]string        `json:"metadata,omitempty"`
+	Personality      []FileConfig             `json:"personality,omitempty"`
+	Networks         []NetworkConfig          `json:"networks,omitempty"`
+	AdminPass        string                   `json:"adminPass,omitempty"`
+	KeyPairName      string                   `json:"key_name,omitempty"`
+	Id               string                   `json:"id,omitempty"`
+	Links            []Link                   `json:"links,omitempty"`
+	OsDcfDiskConfig  string                   `json:"OS-DCF:diskConfig,omitempty"`
+	SecurityGroup    []map[string]interface{} `json:"security_groups,omitempty"`
+	ConfigDrive      bool                     `json:"config_drive"`
+	UserData         string                   `json:"user_data"`
 }
 
 // ResizeRequest structures are used internally to encode to JSON the parameters required to resize a server instance.
